@@ -9,16 +9,17 @@ class ProjectsList {
   String? plDoc;
   String? plWeb;
 
-  ProjectsList(
-      {this.plId,
-      this.plTitle,
-      this.plBody,
-      this.plImage,
-      this.plGoogleplay,
-      this.plAppstore,
-      this.plGithub,
-      this.plDoc,
-      this.plWeb});
+  ProjectsList({
+    this.plId,
+    this.plTitle,
+    this.plBody,
+    this.plImage,
+    this.plGoogleplay,
+    this.plAppstore,
+    this.plGithub,
+    this.plDoc,
+    this.plWeb,
+  });
 
   ProjectsList.fromJson(Map<String, dynamic> json) {
     plId = json['pl_id'];
