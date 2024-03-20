@@ -46,7 +46,7 @@ jobs:
 
       # Decode Android release Service Account
       - name: Decode Android Service Account
-        run: echo "${{ secrets.PRODUCTION_CREDENTIAL_FILE }}" | base64 --decode > ${{ env.SERVICE_ACCOUNT_PATH }}
+        run: echo "${{ secrets.ANDROID_RELEASE_SERVICE_ACCOUNT}}" | base64 --decode > ${{ env.SERVICE_ACCOUNT_PATH }}
 
       # Run flutter commands
       - name: Run flutter pub get
