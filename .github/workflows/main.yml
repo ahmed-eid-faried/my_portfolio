@@ -23,13 +23,26 @@ jobs:
           flutter-version: "3.19.3"
       - run: flutter pub get
       - run: flutter build apk
-      - run: mkdir -p buildapps && mv build/app/outputs/apk/* buildapps/
+      # - run: mkdir -p buildapps && mv build/app/outputs/apk/* buildapps/
       - run: flutter build appbundle
-      - run: mv build/app/outputs/bundle/* buildapps/
+      # - run: mv build/app/outputs/bundle/* buildapps/
       - run: flutter pub get
       - run: flutter build web
-      - run: mv build/web/* buildapps/
+      # - run: mv build/web/* buildapps/
 
+      - name: Move builds to buildapps directory
+        run: |
+          mkdir -p buildapps
+          mv build/app/outputs/apk/* buildapps/
+          mv build/app/outputs/bundle/* buildapps/
+          mv build/web/* buildapps/
+
+      - name: Cache build outputs
+        uses: actions/cache@v2
+        with:
+          path: buildapps
+          key: ${{ runner.os }}-buildapps-${{ hashFiles('buildapps/**') }}
+          
       - run: |
           echo CACHE-PATH=${{ steps.flutter-action.outputs.CACHE-PATH }}
           echo CACHE-KEY=${{ steps.flutter-action.outputs.CACHE-KEY }}
