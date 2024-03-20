@@ -1,0 +1,63 @@
+name: Flutter CI/CD
+
+on:
+  push:
+    branches:
+      - "*"
+      # - main
+  pull_request:
+    branches:
+      - "*"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: "stable"
+
+      - name: Get dependencies
+        run: flutter pub get
+
+      - name: Build APK
+        run: flutter build appbundle
+
+      - name: Build IPA
+        run: flutter build ios --release --no-codesign
+
+      - name: Build Web
+        run: flutter build web
+
+      - name: Build Windows
+        if: matrix.os == 'windows-latest'
+        run: flutter build windows
+
+      - name: Build Linux
+        if: matrix.os == 'ubuntu-latest'
+        run: flutter build linux
+
+      - name: Build macOS
+        if: matrix.os == 'macos-latest'
+        run: flutter build macos
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: app-artifacts
+          path: |
+            build/app/outputs/bundle/release/*.aab
+            build/ios/iphoneos/*.ipa
+            build/web/
+            build/windows/
+            build/linux/
+            build/macos/
