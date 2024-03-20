@@ -16,34 +16,46 @@ jobs:
         run: |
           ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
-      # ###################################
-      # steps:
       - uses: actions/checkout@v4
       - uses: subosito/flutter-action@v2
         with:
           channel: "stable" # or: 'beta', 'dev', 'master' (or 'main')
           flutter-version: "3.19.3"
-      # ###################################
       - run: flutter pub get
-      # - run: flutter test
       - run: flutter build apk
       - run: flutter build appbundle
-      # ###################################
-      # steps:
-      # - uses: actions/checkout@v4
-      # - uses: subosito/flutter-action@v2
-      #   with:
-      #     channel: 'stable'
       - run: flutter pub get
-      # - run: flutter test
       - run: flutter build web
 
       - run: |
-          echo CACHE-PATH=${{ steps.flutter-action.outputs.CACHE-PATH }}
-          echo CACHE-KEY=${{ steps.flutter-action.outputs.CACHE-KEY }}
-          echo CHANNEL=${{ steps.flutter-action.outputs.CHANNEL }}
-          echo VERSION=${{ steps.flutter-action.outputs.VERSION }}
-          echo ARCHITECTURE=${{ steps.flutter-action.outputs.ARCHITECTURE }}
-          echo PUB-CACHE-PATH=${{ steps.flutter-action.outputs.PUB-CACHE-PATH }}
-          echo PUB-CACHE-KEY=${{ steps.flutter-action.outputs.PUB-CACHE-KEY }}
-        shell: bash
+          echo "📂 Location of built APKs:"
+          ls -R ${{ github.workspace }}/build/app/outputs/apk/
+          echo "📂 Location of built app bundles:"
+          ls -R ${{ github.workspace }}/build/app/outputs/bundle/
+          echo "📂 Location of built web files:"
+          ls -R ${{ github.workspace }}/build/web/
+
+      - name: Publish to Google Play
+        uses: r0adkll/upload-google-play@v1
+        with:
+          service_account_json_key: ${{ secrets.PLAY_STORE_JSON_KEY }}
+          package_name: 'com.amadytech.amadytech'
+          track: 'internal' # or 'alpha', 'beta', 'production'
+          app_bundle: 'build/app/outputs/bundle/release/app-release.aab'
+          
+      - name: Print secret value
+        run: echo ${{ secrets.PLAY_STORE_JSON_KEY }}
+      
+      # # Authenticate with Google Play Publishing API
+      # - name: Authenticate with Google Play
+      #   uses: google-github-actions/auth@v0
+      #   with:
+      #     credentials: $ {{ secrets.PLAY_STORE_JSON_KEY }}
+
+      # # Upload APK to Google Play
+      # - name: Upload APK to Google Play
+      #   run: |
+      #     bundletool build-apks --bundle=$BUILD_OUTPUT/app-release.aab --output=$BUILD_OUTPUT/app-release.apks
+      #     bundletool install-apks --apks=$BUILD_OUTPUT/app-release.apks --key=$BUILD_OUTPUT/keystore.json --ks-pass=file:$BUILD_OUTPUT/keystore.pass --ks-key-alias=upload --ks-pass=pass:android
+      #   env:
+      #     BUILD_OUTPUT: $ {{ github.workspace }}
