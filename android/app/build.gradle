@@ -57,22 +57,22 @@ android {
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
     }
+    signingConfigs {
+        release {
+            storeFile file('keystore.jks') // استبدل بالمسار الصحيح لمفتاح التوقيع الذي أنشأته
+            storePassword 'awdrfyji38923793SKW-/.SD' // استبدل بكلمة مرور المخزن الخاصة بك
+            keyAlias 'upload' // استبدل بالاسم البديل الذي أعطيته للمفتاح
+            keyPassword 'awdrfyji38923793SKW-/.SD' // استبدل بكلمة مرور المفتاح الخاصة بك
+        }
+    }
     // signingConfigs {
     //     release {
-    //         storeFile file('portfolio-flutter-keystore.jks') // استبدل بالمسار الصحيح لمفتاح التوقيع الذي أنشأته
-    //         storePassword 'awdrfyji38923793SKW-/.SD' // استبدل بكلمة مرور المخزن الخاصة بك
-    //         keyAlias 'upload' // استبدل بالاسم البديل الذي أعطيته للمفتاح
-    //         keyPassword 'awdrfyji38923793SKW-/.SD' // استبدل بكلمة مرور المفتاح الخاصة بك
+    //         keyAlias keystoreProperties['keyAlias']
+    //         keyPassword keystoreProperties['keyPassword']
+    //         storeFile keystoreProperties['storeFile'] ? file(keystoreProperties['storeFile']) : null
+    //         storePassword keystoreProperties['storePassword']
     //     }
     // }
-       signingConfigs {
-       release {
-           keyAlias keystoreProperties['keyAlias']
-           keyPassword keystoreProperties['keyPassword']
-           storeFile keystoreProperties['storeFile'] ? file(keystoreProperties['storeFile']) : null
-           storePassword keystoreProperties['storePassword']
-       }
-   }
     buildTypes {
         release {
             // TODO: Add your own signing config for the release build.
