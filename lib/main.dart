@@ -6,7 +6,7 @@ import 'package:my_portfolio/core/constant/routes.dart';
 import 'package:my_portfolio/core/services/services.dart';
 import 'package:my_portfolio/routes.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
-// test github actions
+// test github actions//
 void main() async {
   await initService();
   runApp(const MyApp());
