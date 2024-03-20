@@ -16,27 +16,16 @@ jobs:
         run: |
           ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
-      # ###################################
-      # steps:
       - uses: actions/checkout@v4
       - uses: subosito/flutter-action@v2
         with:
           channel: "stable" # or: 'beta', 'dev', 'master' (or 'main')
           flutter-version: "3.19.3"
-      # ###################################
       - run: flutter pub get
-      # - run: flutter test
-      - run: flutter build apk
-      - run: flutter build appbundle
-      # ###################################
-      # steps:
-      # - uses: actions/checkout@v4
-      # - uses: subosito/flutter-action@v2
-      #   with:
-      #     channel: 'stable'
+      - run: flutter build apk --output-dir=buildapps
+      - run: flutter build appbundle --output-dir=buildapps
       - run: flutter pub get
-      # - run: flutter test
-      - run: flutter build web
+      - run: flutter build web --output-dir=buildapps
 
       - run: |
           echo CACHE-PATH=${{ steps.flutter-action.outputs.CACHE-PATH }}
