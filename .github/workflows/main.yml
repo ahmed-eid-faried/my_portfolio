@@ -3,7 +3,7 @@ name: Flutter CI/CD
 on:
   push:
     branches:
-      - '*'
+      - main
   pull_request:
     branches:
       - '*'
@@ -27,9 +27,6 @@ jobs:
     - name: Build APK
       run: flutter build appbundle
 
-    - name: Build IPA
-      run: flutter build ios --release --no-codesign
-
     - name: Build Web
       run: flutter build web
 
@@ -39,5 +36,4 @@ jobs:
         name: app-artifacts
         path: |
           build/app/outputs/bundle/release/*.aab
-          build/ios/iphoneos/*.ipa
           build/web/
