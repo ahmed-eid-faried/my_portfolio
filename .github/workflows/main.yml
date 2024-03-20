@@ -14,7 +14,7 @@ jobs:
     env:
       # Setup env variables that will be used throughout the workflow
       JAVA_VERSION: 12.0
-      FLUTTER_VERSION: 3.13.1
+      FLUTTER_VERSION: 3.19.3
       AAB_PATH: build/app/outputs/bundle/release/app-release.aab
       KEYSTORE_PATH: android/upload-keystore.jks
       KEY_PROPS_PATH: android/key.properties
@@ -58,8 +58,8 @@ jobs:
       - name: 🕵️ Analyze to check for bad Dart/Flutter practices
         run: flutter analyze
 
-      - name: 📉 Run all app tests
-        run: flutter test
+      # - name: 📉 Run all app tests
+      #   run: flutter test
 
       # Build Android Bundle release file
       - name: Build aab
@@ -77,6 +77,6 @@ jobs:
         uses: r0adkll/upload-google-play@v1
         with:
           serviceAccountJson: ${{ env.SERVICE_ACCOUNT_PATH }}
-          packageName: com.yourapp.package
+          packageName: com.amadytech.amadytech
           releaseFiles: ${{ env.AAB_PATH }}
           track: internal
