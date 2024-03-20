@@ -4,6 +4,10 @@
 # sudo chmod +x fix_ios_issue.sh
 # ./fix_ios_issue.sh
 
+# FIRST TIME FOR IOS
+pod install
+sudo gem install cocoapods
+
 # Check read/write permissions for the current user
 sudo chown -R $(whoami) /Users/hellobishyaka/Desktop/consumer/.dart_tool
 sudo chown -R $(whoami) /Users/hellobishyaka/Desktop/consumer/.flutter-plugins
