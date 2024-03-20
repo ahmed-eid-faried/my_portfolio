@@ -22,10 +22,13 @@ jobs:
           channel: "stable" # or: 'beta', 'dev', 'master' (or 'main')
           flutter-version: "3.19.3"
       - run: flutter pub get
-      - run: flutter build apk --output-dir=buildapps
-      - run: flutter build appbundle --output-dir=buildapps
+      - run: flutter build apk
+      - run: mkdir -p buildapps && mv build/app/outputs/apk/* buildapps/
+      - run: flutter build appbundle
+      - run: mv build/app/outputs/bundle/* buildapps/
       - run: flutter pub get
-      - run: flutter build web --output-dir=buildapps
+      - run: flutter build web
+      - run: mv build/web/* buildapps/
 
       - run: |
           echo CACHE-PATH=${{ steps.flutter-action.outputs.CACHE-PATH }}
