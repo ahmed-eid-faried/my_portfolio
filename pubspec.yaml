@@ -56,10 +56,6 @@ icons_launcher:
     linux:
       enable: true
 
-
-
-
-
 # dart run flutter_native_splash:create
 flutter_native_splash:
   color: "#ffffff"
