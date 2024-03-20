@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:dartz/dartz.dart';
+import 'package:flutter/material.dart';
 import 'package:my_portfolio/core/class/status_request.dart';
 import 'package:my_portfolio/core/function/checkinternet.dart';
 // ignore: depend_on_referenced_packages
@@ -17,7 +18,7 @@ class Curd {
             await http.post(Uri.parse(link), body: data, headers: myheaders);
         if (response.statusCode == 200 || response.statusCode == 201) {
           var responsebody = jsonDecode(response.body);
-          // print(responsebody);
+          // debugPrint(responsebody);
           return Right(responsebody);
         } else {
           return const Left(StatusRequest.serverfailure);
@@ -26,7 +27,27 @@ class Curd {
         return const Left(StatusRequest.offlinefailure);
       }
     } catch (e) {
-      print(e);
+      debugPrint(e.toString());
+      return const Left(StatusRequest.serverException);
+    }
+  }
+
+  Future<Either<StatusRequest, Map>> getData(String link, Map data) async {
+    try {
+      if (await checkInternet()) {
+        var response = await http.get(Uri.parse(link), headers: myheaders);
+        if (response.statusCode == 200 || response.statusCode == 201) {
+          var responsebody = jsonDecode(response.body);
+          // debugPrint(responsebody);
+          return Right(responsebody);
+        } else {
+          return const Left(StatusRequest.serverfailure);
+        }
+      } else {
+        return const Left(StatusRequest.offlinefailure);
+      }
+    } catch (e) {
+      debugPrint(e.toString());
       return const Left(StatusRequest.serverException);
     }
   }

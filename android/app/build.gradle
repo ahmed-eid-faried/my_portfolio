@@ -24,7 +24,7 @@ if (flutterVersionName == null) {
 
 android {
     namespace "com.amadytech.amadytech"
-    compileSdkVersion flutter.compileSdkVersion
+    compileSdk flutter.compileSdkVersion
     ndkVersion flutter.ndkVersion
 
     compileOptions {
@@ -50,9 +50,9 @@ android {
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
     }
- signingConfigs {
+    signingConfigs {
         release {
-            storeFile file('amadytech-flutter-keystore.jks') // استبدل بالمسار الصحيح لمفتاح التوقيع الذي أنشأته
+            storeFile file('portfolio-flutter-keystore.jks') // استبدل بالمسار الصحيح لمفتاح التوقيع الذي أنشأته
             storePassword 'awdrfyji38923793SKW-/.SD' // استبدل بكلمة مرور المخزن الخاصة بك
             keyAlias 'upload' // استبدل بالاسم البديل الذي أعطيته للمفتاح
             keyPassword 'awdrfyji38923793SKW-/.SD' // استبدل بكلمة مرور المفتاح الخاصة بك
@@ -62,9 +62,7 @@ android {
         release {
             // TODO: Add your own signing config for the release build.
             // Signing with the debug keys for now, so `flutter run --release` works.
-            // signingConfig signingConfigs.debug
             signingConfig signingConfigs.release
-
         }
     }
 }

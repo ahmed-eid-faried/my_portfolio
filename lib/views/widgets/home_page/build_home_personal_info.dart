@@ -31,7 +31,7 @@ class BuildHomePersonalInfo extends StatelessWidget {
             child: FadeInRight(
               duration: const Duration(milliseconds: 1400),
               child: Text(
-                dashcontroller.homeDetials![0].hdName ?? '',
+                dashcontroller.homeDetials!.first.hdName ?? '',
                 style: AppTextStyles.headingStyles(),
               ),
             ),
@@ -42,7 +42,7 @@ class BuildHomePersonalInfo extends StatelessWidget {
           FadeInDown(
             duration: const Duration(milliseconds: 1600),
             child: Text(
-              dashcontroller.homeDetials![0].hdDesc ?? '',
+              dashcontroller.homeDetials!.first.hdDesc ?? '',
               style: AppTextStyles.normalStyle(),
             ),
           ),
@@ -53,7 +53,7 @@ class BuildHomePersonalInfo extends StatelessWidget {
             duration: const Duration(milliseconds: 1800),
             child: AppButtons.buildMaterialButton(
                 onTap: () => dashcontroller
-                    .link(dashcontroller.homeDetials![0].hdCv ?? ''),
+                    .link(dashcontroller.homeDetials!.first.hdCv ?? ''),
                 buttonName: 'Download CV'),
           ),
           Constants.sizedBox(height: 18.0),

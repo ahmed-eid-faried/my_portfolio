@@ -1,7 +1,7 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
- import 'package:my_portfolio/controller/main_dash_board_controller.dart';
+import 'package:my_portfolio/controller/main_dash_board_controller.dart';
 import 'package:my_portfolio/core/constant/color.dart';
 import 'package:my_portfolio/core/class/constants.dart';
 import 'package:my_portfolio/data/datasource/static/static.dart';

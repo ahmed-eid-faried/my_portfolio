@@ -1,19 +1,18 @@
-
-class Services {
+class Service {
   String? servicesId;
   String? servicesTitle;
   String? servicesBody;
   String? servicesAssets;
   String? servicesType;
 
-  Services(
+  Service(
       {this.servicesId,
       this.servicesTitle,
       this.servicesBody,
       this.servicesAssets,
       this.servicesType});
 
-  Services.fromJson(Map<String, dynamic> json) {
+  Service.fromJson(Map<String, dynamic> json) {
     servicesId = json['services_id'];
     servicesTitle = json['services_title'];
     servicesBody = json['services_body'];
@@ -31,5 +30,3 @@ class Services {
     return data;
   }
 }
-
-

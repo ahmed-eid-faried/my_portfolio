@@ -15,18 +15,18 @@ import 'package:responsive_sizer/responsive_sizer.dart';
 
 class BuildAnimatedContainer extends StatelessWidget {
   const BuildAnimatedContainer({
-    Key? key,
+    super.key,
     required this.title,
     required this.asset,
     required this.body,
-    required this.servicesType,
+    // required this.servicesType,
     required this.index,
-  }) : super(key: key);
+  });
 
   final String title;
   final String asset;
   final String body;
-  final String servicesType;
+  // final String servicesType;
   final int index;
 
   @override
@@ -34,7 +34,7 @@ class BuildAnimatedContainer extends StatelessWidget {
     Get.put(ContactMeController());
     Get.put(MyServicesController());
     Get.put(MainDashBoardControllerImp());
-    print("asset:-$asset");
+    debugPrint("asset:-$asset");
     return GetBuilder<ContactMeController>(
       builder: (contactMeController) => GetBuilder<MainDashBoardControllerImp>(
           builder: (controllerDash) =>
@@ -134,7 +134,7 @@ class BuildAnimatedContainer extends StatelessWidget {
                             onTap: () async {
                               await controllerDash.scrollTo(
                                   index: screensList.length - 2);
-                              contactMeController.controllerSubject!.text =
+                              contactMeController.controllerSubject.text =
                                   controllerDash.services![index].servicesType!;
                               contactMeController.update();
                             }),

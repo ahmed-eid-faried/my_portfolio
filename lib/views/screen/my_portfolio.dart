@@ -4,10 +4,10 @@ import 'package:my_portfolio/core/constant/color.dart';
 import 'package:my_portfolio/core/class/helper_class.dart';
 import 'package:my_portfolio/views/widgets/myportfolio/build_project_grid_view.dart';
 import 'package:my_portfolio/views/widgets/myportfolio/project_text.dart';
- import '../../core/class/constants.dart';
+import '../../core/class/constants.dart';
 
 class MyPortfolio extends StatelessWidget {
-  const MyPortfolio({Key? key}) : super(key: key);
+  const MyPortfolio({super.key});
   @override
   Widget build(BuildContext context) {
     return HelperClass(
@@ -36,7 +36,7 @@ class MyPortfolio extends StatelessWidget {
         ],
       ),
       paddingWidth: Get.width * 0.1,
-      bgColor: AppColor .bgColor2,
+      bgColor: AppColor.bgColor2,
     );
   }
 }

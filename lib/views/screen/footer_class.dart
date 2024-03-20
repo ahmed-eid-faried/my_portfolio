@@ -6,8 +6,8 @@ import 'package:my_portfolio/views/widgets/footer/custom_footer_buttons.dart';
 
 class FooterClass extends StatelessWidget {
   const FooterClass({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
   @override
   Widget build(BuildContext context) {
     Get.put(MainDashBoardControllerImp());

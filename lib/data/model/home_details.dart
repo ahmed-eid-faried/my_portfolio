@@ -1,4 +1,4 @@
-class HomeDetials {
+class HomeDetails {
   String? hdId;
   String? hdName;
   String? hdDesc;
@@ -6,18 +6,17 @@ class HomeDetials {
   String? hdCv;
   String? hdAboutmename;
   String? hdAboutmedesc;
-  String? hdAboutimage;
-  HomeDetials(
+
+  HomeDetails(
       {this.hdId,
       this.hdName,
       this.hdDesc,
       this.hdImage,
       this.hdCv,
       this.hdAboutmename,
-      this.hdAboutmedesc,
-      this.hdAboutimage});
+      this.hdAboutmedesc});
 
-  HomeDetials.fromJson(Map<String, dynamic> json) {
+  HomeDetails.fromJson(Map<String, dynamic> json) {
     hdId = json['hd_id'];
     hdName = json['hd_name'];
     hdDesc = json['hd_desc'];
@@ -25,7 +24,6 @@ class HomeDetials {
     hdCv = json['hd_cv'];
     hdAboutmename = json['hd_aboutmename'];
     hdAboutmedesc = json['hd_aboutmedesc'];
-    hdAboutimage = json['hd_aboutimage'];
   }
 
   Map<String, dynamic> toJson() {
@@ -37,8 +35,6 @@ class HomeDetials {
     data['hd_cv'] = hdCv;
     data['hd_aboutmename'] = hdAboutmename;
     data['hd_aboutmedesc'] = hdAboutmedesc;
-    data['hd_aboutimage'] = hdAboutimage;
-
     return data;
   }
 }

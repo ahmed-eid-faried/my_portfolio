@@ -10,12 +10,12 @@ class HandlingDataViewScaffold extends StatelessWidget {
   final bool view;
   final bool paddingOfflineViewDataWidget;
   const HandlingDataViewScaffold({
-    Key? key,
+    super.key,
     required this.statusRequest,
     required this.child,
     this.view = false,
     this.paddingOfflineViewDataWidget = true,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -34,12 +34,12 @@ class HandlingDataView extends StatelessWidget {
   final bool view;
   final bool paddingOfflineViewDataWidget;
   const HandlingDataView({
-    Key? key,
+    super.key,
     required this.statusRequest,
     required this.child,
     this.view = false,
     this.paddingOfflineViewDataWidget = true,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

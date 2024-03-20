@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_portfolio/core/class/app_buttons.dart';
- import 'package:my_portfolio/core/class/constants.dart';
+import 'package:my_portfolio/core/class/constants.dart';
 import 'package:my_portfolio/core/constant/color.dart';
 import 'package:my_portfolio/core/constant/fonts.dart';
 import 'package:my_portfolio/core/function/validinput.dart';
@@ -25,7 +25,7 @@ class BuildForm extends StatelessWidget {
                 color: Colors.transparent,
                 elevation: 8,
                 child: TextFormField(
-              validator: (value) => validator(value, "text"),
+                  validator: (value) => validator(value, "text"),
                   cursorColor: AppColor.white,
                   style: AppTextStyles.normalStyle(),
                   decoration: buildInputDecoration(hintText: 'Full Name'),
@@ -38,8 +38,8 @@ class BuildForm extends StatelessWidget {
                 borderRadius: BorderRadius.circular(10),
                 color: Colors.transparent,
                 elevation: 8,
-                child:  TextFormField(
-              validator: (value) => validator(value, "email"),
+                child: TextFormField(
+                  validator: (value) => validator(value, "email"),
                   cursorColor: AppColor.white,
                   style: AppTextStyles.normalStyle(),
                   decoration: buildInputDecoration(hintText: 'Email Address'),
@@ -56,8 +56,8 @@ class BuildForm extends StatelessWidget {
                 borderRadius: BorderRadius.circular(10),
                 color: Colors.transparent,
                 elevation: 8,
-                child:  TextFormField(
-              validator: (value) => validator(value, "phone"),
+                child: TextFormField(
+                  validator: (value) => validator(value, "phone"),
                   cursorColor: AppColor.white,
                   style: AppTextStyles.normalStyle(),
                   decoration: buildInputDecoration(hintText: 'Mobile Number'),
@@ -71,7 +71,7 @@ class BuildForm extends StatelessWidget {
                 color: Colors.transparent,
                 elevation: 8,
                 child: TextFormField(
-              validator: (value) => validator(value, "text"),
+                  validator: (value) => validator(value, "text"),
                   cursorColor: AppColor.white,
                   style: AppTextStyles.normalStyle(),
                   decoration: buildInputDecoration(hintText: 'Email Subject'),
@@ -86,7 +86,7 @@ class BuildForm extends StatelessWidget {
           color: Colors.transparent,
           elevation: 8,
           child: TextFormField(
-              validator: (value) => validator(value, "text"),
+            validator: (value) => validator(value, "text"),
             maxLines: 15,
             cursorColor: AppColor.white,
             style: AppTextStyles.normalStyle(),

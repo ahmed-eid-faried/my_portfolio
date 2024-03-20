@@ -4,7 +4,7 @@ import 'package:my_portfolio/core/class/status_request.dart';
 import 'package:my_portfolio/core/function/handling_data.dart';
 import 'package:my_portfolio/core/services/services.dart';
 import 'package:my_portfolio/data/datasource/remote/home.dart';
-import 'package:my_portfolio/data/model/home_detials.dart';
+import 'package:my_portfolio/data/model/home_details.dart';
 import 'package:my_portfolio/data/model/my_portfolio_model.dart';
 import 'package:my_portfolio/data/model/projects_list.dart';
 import 'package:my_portfolio/data/model/services.dart';
@@ -33,19 +33,19 @@ class MainDashBoardControllerImp extends MainDashBoardController {
       ScrollOffsetListener.create();
   final onMenuHover = Matrix4.identity()..scale(1.0);
   var menuIndex = 0;
-  static late MyPortfolioModel myPortfolio;
+  static late Data myPortfolio;
   // final box = GetStorage();
   HomeData homeData = HomeData(Get.find());
   StatusRequest statusRequest = StatusRequest.noAction;
   MyService myServices = Get.find();
   List<SocialMedia>? socialMedia = [];
-  List<ProjectsList>? projectsList = [];
-  List<HomeDetials>? homeDetials = [];
-  List<Services>? services = [];
+  List<Project>? projectsList = [];
+  List<HomeDetails>? homeDetials = [];
+  List<Service>? services = [];
   String cv = '';
   List<String?> socialLink = [];
   List<String?> foooterLink = [];
-  var socialBI;
+  int? socialBI;
 
   @override
   Future<void> intialData() async {
@@ -53,18 +53,17 @@ class MainDashBoardControllerImp extends MainDashBoardController {
     update();
     var response = await homeData.getData();
     statusRequest = handlingData(response);
-    // print("statusRequest:-$statusRequest");
+    // debugPrint("statusRequest:-$statusRequest");
     if (statusRequest == StatusRequest.success) {
-      if (response['status'] == "success") {
-        updateAllData(response);
-        // print("=========================================================");
-        // print("response:-$response");
-        // print("=========================================================");
-
-        // box.write('MyPortfolioModel', response);
-      } else {
-        statusRequest = StatusRequest.failure;
-      }
+      // if (response['status'] == "success") {
+      updateAllData(response);
+      debugPrint("=========================================================");
+      debugPrint("response:-$response");
+      debugPrint("=========================================================");
+      // box.write('MyPortfolioModel', response);
+      // } else {
+      //   statusRequest = StatusRequest.failure;
+      // }
     }
     update();
   }
@@ -103,17 +102,29 @@ class MainDashBoardControllerImp extends MainDashBoardController {
         .map((item) => SocialMedia.fromJson(item))
         .toList();
     projectsList = (response['projects_list'] as List)
-        .map((item) => ProjectsList.fromJson(item))
+        .map((item) => Project.fromJson(item))
         .toList();
-    print("=========================================================");
-    print("projectsList[0]:-${projectsList!.length}");
-    print("=========================================================");
+    debugPrint("=========================================================");
+    debugPrint("projectsList.first:-${projectsList!.length}");
+    debugPrint("=========================================================");
+    debugPrint("=========================================================");
+    debugPrint("social_media:-${response['social_media']}");
+    debugPrint("=========================================================");
+    debugPrint("=========================================================");
+    debugPrint("projects_list:-${response['projects_list']}");
+    debugPrint("=========================================================");
+    debugPrint("=========================================================");
+    debugPrint("home_detials:-${response['home_detials']}");
+    debugPrint("=========================================================");
+    debugPrint("=========================================================");
+    debugPrint("services:-${response['services']}");
+    debugPrint("=========================================================");
     update();
     homeDetials = (response['home_detials'] as List)
-        .map((item) => HomeDetials.fromJson(item))
+        .map((item) => HomeDetails.fromJson(item))
         .toList();
     services = (response['services'] as List)
-        .map((item) => Services.fromJson(item))
+        .map((item) => Service.fromJson(item))
         .toList();
   }
 
@@ -144,8 +155,8 @@ class MainDashBoardControllerImp extends MainDashBoardController {
   @override
   intialData2() async {
     // ignore: unnecessary_null_comparison
-    if (socialMedia![0] != null) {
-      var socialLinkIntialData = socialMedia![0];
+    if (socialMedia!.isNotEmpty) {
+      var socialLinkIntialData = socialMedia!.first;
       socialLink = [
         socialLinkIntialData.smFacebook,
         // socialLinkIntialData.smTwitter,

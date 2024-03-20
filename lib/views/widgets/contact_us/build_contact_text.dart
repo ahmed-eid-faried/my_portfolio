@@ -2,7 +2,7 @@ import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:my_portfolio/core/constant/color.dart';
 import 'package:my_portfolio/core/constant/fonts.dart';
- 
+
 class BuildContactText extends StatelessWidget {
   const BuildContactText({super.key});
   @override
@@ -17,7 +17,7 @@ class BuildContactText extends StatelessWidget {
             TextSpan(
               text: 'Me!',
               style: AppTextStyles.headingStyles(
-                  fontSize: 30, color: AppColor .robinEdgeBlue),
+                  fontSize: 30, color: AppColor.robinEdgeBlue),
             )
           ],
         ),

@@ -42,6 +42,7 @@ class AppAssets {
   static String work1 = 'assets/images/work1.jpg';
   static String work2 = 'assets/images/work2.jpg';
   static String share = 'assets/images/share.png';
+  static String desktop = 'assets/images/desktop.png';
   ///////////////////////////////////LOTTILE///////////////////////////////////////
   static const String rootLottie = "assets/lottie";
   static const String loading = "$rootLottie/loading.json";

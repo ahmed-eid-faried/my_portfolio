@@ -8,7 +8,7 @@ import 'package:my_portfolio/views/widgets/main_dashboard/desktop_menu.dart';
 import 'package:my_portfolio/views/widgets/main_dashboard/mobile_menu.dart';
 
 class MainDashBoard extends StatelessWidget {
-  const MainDashBoard({Key? key}) : super(key: key);
+  const MainDashBoard({super.key});
   @override
   Widget build(BuildContext context) {
     Get.put(MainDashBoardControllerImp());

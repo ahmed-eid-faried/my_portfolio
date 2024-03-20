@@ -40,7 +40,7 @@ class BuildAboutMeContents extends StatelessWidget {
             FadeInLeft(
               duration: const Duration(milliseconds: 1400),
               child: Text(
-                controller.homeDetials![0].hdAboutmename!,
+                controller.homeDetials!.first.hdAboutmename!,
                 style: AppTextStyles.montserratStyle(color: Colors.white),
               ),
             ),
@@ -48,7 +48,7 @@ class BuildAboutMeContents extends StatelessWidget {
             FadeInLeft(
               duration: const Duration(milliseconds: 1600),
               child: Text(
-                controller.homeDetials![0].hdAboutmedesc!,
+                controller.homeDetials!.first.hdAboutmedesc!,
                 maxLines: aboutMecontroller.readMore == true ? 5000 : 8,
                 style: AppTextStyles.normalStyle(),
               ),

@@ -1,9 +1,8 @@
-
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:my_portfolio/core/constant/color.dart';
 import 'package:my_portfolio/core/constant/fonts.dart';
-  
+
 class ProjectText extends StatelessWidget {
   const ProjectText({super.key});
   @override
@@ -18,7 +17,7 @@ class ProjectText extends StatelessWidget {
             TextSpan(
               text: 'Projects',
               style: AppTextStyles.headingStyles(
-                  fontSize: 30, color: AppColor .robinEdgeBlue),
+                  fontSize: 30, color: AppColor.robinEdgeBlue),
             )
           ],
         ),

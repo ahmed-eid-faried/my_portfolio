@@ -5,7 +5,7 @@ import 'package:my_portfolio/views/widgets/home_page/build_home_personal_info.da
 import 'package:my_portfolio/views/widgets/profile_animation.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
+  const HomePage({super.key});
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;

@@ -8,7 +8,7 @@ class AppColor {
   static Color bgColor2 = const Color(0xff00416A);
   static Color robinEdgeBlue = const Color(0xff00CCCC);
   static Color white = const Color(0xffffffff);
-    static Color primaryColor = themeColor;
+  static Color primaryColor = themeColor;
 
   // ////////////////////////////////////////////////////////////
 
@@ -25,5 +25,4 @@ class AppColor {
     // aqua.withOpacity(0.1),
     // aqua.withOpacity(0.0),
   ];
-
 }

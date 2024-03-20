@@ -17,7 +17,7 @@ class BuildFormSmall extends StatelessWidget {
   Widget build(BuildContext context) {
     ContactMeController controller = Get.put(ContactMeController());
     return Form(
-      key: controller.formstate,
+      key: controller.formKey,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
@@ -91,7 +91,10 @@ class BuildFormSmall extends StatelessWidget {
           ),
           Constants.sizedBox(height: 40.0),
           AppButtons.buildMaterialButton(
-              buttonName: 'Send Message', onTap: () => controller.send()),
+            buttonName: 'Send Message',
+            // onTap: () => controller.send(),
+            onTap: () {},
+          ),
           Constants.sizedBox(height: 30.0),
         ],
       ),

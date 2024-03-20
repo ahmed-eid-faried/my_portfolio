@@ -2,7 +2,7 @@ import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:my_portfolio/core/constant/color.dart';
 import 'package:my_portfolio/core/constant/fonts.dart';
- 
+
 class BuildMyServicesText extends StatelessWidget {
   const BuildMyServicesText({super.key});
   @override
@@ -17,7 +17,7 @@ class BuildMyServicesText extends StatelessWidget {
             TextSpan(
               text: 'Services',
               style: AppTextStyles.headingStyles(
-                  fontSize: 30.0, color: AppColor .robinEdgeBlue),
+                  fontSize: 30.0, color: AppColor.robinEdgeBlue),
             )
           ],
         ),

@@ -6,7 +6,7 @@ import 'package:my_portfolio/views/widgets/about_me/build_about_me_contents.dart
 import 'package:my_portfolio/views/widgets/about_me/build_profile_picture.dart';
 
 class AboutMe extends StatelessWidget {
-  const AboutMe({Key? key}) : super(key: key);
+  const AboutMe({super.key});
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;

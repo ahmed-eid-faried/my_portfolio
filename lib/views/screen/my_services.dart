@@ -5,7 +5,7 @@ import 'package:my_portfolio/core/class/helper_class.dart';
 import 'package:my_portfolio/views/widgets/my_services/build_services_column.dart';
 
 class MyServices extends StatelessWidget {
-  const MyServices({Key? key}) : super(key: key);
+  const MyServices({super.key});
   @override
   Widget build(BuildContext context) {
     return HelperClass(

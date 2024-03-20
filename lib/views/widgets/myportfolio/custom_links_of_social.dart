@@ -12,7 +12,7 @@ class CustomLinksOfSocial extends StatelessWidget {
     super.key,
     required this.project,
   });
-  final ProjectsList project;
+  final Project project;
   @override
   Widget build(BuildContext context) {
     Get.put(MyPortfolioController());
@@ -22,6 +22,7 @@ class CustomLinksOfSocial extends StatelessWidget {
       project.plGithub,
       project.plDoc,
       project.plWeb,
+      project.plWindows,
     ];
     var assetsButtons = [
       AppAssets.googleplay,
@@ -29,6 +30,7 @@ class CustomLinksOfSocial extends StatelessWidget {
       AppAssets.github,
       AppAssets.doc,
       AppAssets.web,
+      AppAssets.desktop,
     ];
     return GetBuilder<MyPortfolioController>(
       builder: (controller) =>

@@ -25,7 +25,7 @@ class MyPortfolioController extends GetxController {
     }
   }
 
-  var socialBI;
+  int? socialBI;
 
   fun(bool value, int index) {
     if (value) {

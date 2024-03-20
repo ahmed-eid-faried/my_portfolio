@@ -1,5 +1,5 @@
-
 class SocialMedia {
+  String? smId;
   String? smFacebook;
   String? smWhatsapp;
   String? smGithub;
@@ -8,20 +8,20 @@ class SocialMedia {
   String? smTwitter;
   String? smCv;
   String? smInstagram;
-  String? smId;
 
   SocialMedia(
-      {this.smFacebook,
+      {this.smId,
+      this.smFacebook,
       this.smWhatsapp,
       this.smGithub,
       this.smLinkedin,
       this.smEmail,
       this.smTwitter,
       this.smCv,
-      this.smInstagram,
-      this.smId});
+      this.smInstagram});
 
   SocialMedia.fromJson(Map<String, dynamic> json) {
+    smId = json['sm_id'];
     smFacebook = json['sm_facebook'];
     smWhatsapp = json['sm_whatsapp'];
     smGithub = json['sm_github'];
@@ -30,11 +30,11 @@ class SocialMedia {
     smTwitter = json['sm_twitter'];
     smCv = json['sm_cv'];
     smInstagram = json['sm_instagram'];
-    smId = json['sm_id'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
+    data['sm_id'] = smId;
     data['sm_facebook'] = smFacebook;
     data['sm_whatsapp'] = smWhatsapp;
     data['sm_github'] = smGithub;
@@ -43,7 +43,6 @@ class SocialMedia {
     data['sm_twitter'] = smTwitter;
     data['sm_cv'] = smCv;
     data['sm_instagram'] = smInstagram;
-    data['sm_id'] = smId;
     return data;
   }
 }

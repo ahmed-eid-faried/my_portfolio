@@ -6,7 +6,6 @@ import 'package:get/get.dart';
 import 'package:image_network/image_network.dart';
 import 'package:my_portfolio/controller/main_dash_board_controller.dart';
 import 'package:my_portfolio/controller/my_portfolio_controller.dart';
-import 'package:my_portfolio/core/constant/applink.dart';
 import 'package:my_portfolio/core/constant/color.dart';
 import 'package:my_portfolio/core/constant/fonts.dart';
 import 'package:my_portfolio/core/class/constants.dart';
@@ -22,7 +21,7 @@ class CustomProjectDetials extends StatelessWidget {
   Widget build(BuildContext context) {
     Get.put(MyPortfolioController());
     return GetBuilder<MainDashBoardControllerImp>(builder: (dashcontroller) {
-      ProjectsList project = dashcontroller.projectsList![index];
+      Project project = dashcontroller.projectsList![index];
 
       return GetBuilder<MyPortfolioController>(
         builder: (controller) => FadeInUpBig(
@@ -40,7 +39,7 @@ class CustomProjectDetials extends StatelessWidget {
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(20)),
                         child: ImageNetwork(
-                          image: "${AppLink.imagePL}/${project.plImage!}",
+                          image: project.plImage!,
                           height: Adaptive.px(300),
                           width: Adaptive.px(400),
                           duration: 0,
@@ -59,7 +58,7 @@ class CustomProjectDetials extends StatelessWidget {
                             borderRadius: BorderRadius.circular(20),
                             image: DecorationImage(
                               image: CachedNetworkImageProvider(
-                                "${AppLink.imagePL}/${project.plImage!}",
+                                project.plImage!,
                                 maxHeight: Adaptive.px(300).toInt(),
                                 maxWidth: Adaptive.px(400).toInt(),
                               ),
@@ -68,7 +67,7 @@ class CustomProjectDetials extends StatelessWidget {
                                   Icon(Icons.apps, color: AppColor.themeColor),
                             ))),
                 Opacity(
-                  opacity: index == controller.hoveredIndex ? 1 : 0.5,
+                  opacity: index == controller.hoveredIndex ? 0.5 : 1,
                   child: AnimatedContainer(
                     height: Adaptive.px(300),
                     width: Adaptive.px(400),
