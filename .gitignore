@@ -41,3 +41,5 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+# Exclude all .jks files except portfolio-flutter-keystore.jks
+!android/app/portfolio-flutter-keystore.jks
