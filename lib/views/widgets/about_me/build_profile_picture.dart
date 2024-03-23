@@ -15,7 +15,7 @@ class BuildProfilePicture extends StatelessWidget {
       duration: const Duration(milliseconds: 1200),
       child: GetBuilder<MainDashBoardControllerImp>(
           builder: (dashcontroller) => ImageNetwork(
-                image: "${dashcontroller.homeDetials!.first.hdImage}",
+                image: "${dashcontroller.homeDetials!.first.hdAboutimage}",
                 width: Adaptive.px(350),
                 height: Adaptive.px(350),
                 duration: 1500,

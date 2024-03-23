@@ -35,7 +35,8 @@ class Curd {
   Future<Either<StatusRequest, Map>> getData(String link, Map data) async {
     try {
       if (await checkInternet()) {
-        var response = await http.get(Uri.parse(link), headers: myheaders);
+        var response = await http.get(Uri.parse(link),
+            headers: {"Access-Control-Allow-Origin": "*"});
         if (response.statusCode == 200 || response.statusCode == 201) {
           var responsebody = jsonDecode(response.body);
           // debugPrint(responsebody);

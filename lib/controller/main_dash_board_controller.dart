@@ -40,7 +40,7 @@ class MainDashBoardControllerImp extends MainDashBoardController {
   MyService myServices = Get.find();
   List<SocialMedia>? socialMedia = [];
   List<Project>? projectsList = [];
-  List<HomeDetails>? homeDetials = [];
+  List<HomeDetials>? homeDetials = [];
   List<Service>? services = [];
   String cv = '';
   List<String?> socialLink = [];
@@ -121,7 +121,7 @@ class MainDashBoardControllerImp extends MainDashBoardController {
     debugPrint("=========================================================");
     update();
     homeDetials = (response['home_detials'] as List)
-        .map((item) => HomeDetails.fromJson(item))
+        .map((item) => HomeDetials.fromJson(item))
         .toList();
     services = (response['services'] as List)
         .map((item) => Service.fromJson(item))

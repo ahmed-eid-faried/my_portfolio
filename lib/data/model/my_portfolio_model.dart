@@ -64,7 +64,7 @@ import 'package:my_portfolio/data/model/social_media.dart';
 class Data {
   List<SocialMedia>? socialMedia;
   List<Project>? projectsList;
-  List<HomeDetails>? homeDetials;
+  List<HomeDetials>? homeDetials;
   List<Service>? services;
 
   Data({this.socialMedia, this.projectsList, this.homeDetials, this.services});
@@ -83,9 +83,9 @@ class Data {
       });
     }
     if (json['home_detials'] != null) {
-      homeDetials = <HomeDetails>[];
+      homeDetials = <HomeDetials>[];
       json['home_detials'].forEach((v) {
-        homeDetials!.add(HomeDetails.fromJson(v));
+        homeDetials!.add(HomeDetials.fromJson(v));
       });
     }
     if (json['services'] != null) {
