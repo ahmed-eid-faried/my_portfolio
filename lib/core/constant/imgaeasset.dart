@@ -21,28 +21,35 @@
 // }
 
 class AppAssets {
-  static String email = 'assets/images/email.png';
-  static String whatsapp = 'assets/images/whatsapp.png';
+  static const String email = 'assets/images/email.png';
+  static const String whatsapp = 'assets/images/whatsapp.png';
 
-  static String facebook = 'assets/images/face.png';
-  static String github = 'assets/images/git.png';
-  static String doc = 'assets/images/doc.png';
-  static String appstore = 'assets/images/appstore.png';
-  static String googleplay = 'assets/images/googleplay.png';
-  static String linkedIn = 'assets/images/in.png';
-  static String insta = 'assets/images/insta.png';
-  static String twitter = 'assets/images/twit.png';
-  static String web = 'assets/images/web.png';
+  static const String facebook = 'assets/images/face.png';
+  static const String github = 'assets/images/git.png';
+  static const String doc = 'assets/images/doc.png';
+  static const String appstore = 'assets/images/appstore.png';
+  static const String googleplay = 'assets/images/googleplay.png';
+  static const String linkedIn = 'assets/images/in.png';
+  static const String insta = 'assets/images/insta.png';
+  static const String twitter = 'assets/images/twit.png';
+  static const String web = 'assets/images/web.png';
 
-  // static String profile1 = 'assets/images/pro1.png';
-  // static String profile2 = 'assets/images/pro2.png';
-  static String code = 'assets/images/coding.png';
-  static String brush = 'assets/images/brush-stroke.png';
-  static String analyst = 'assets/images/analytics.png';
-  static String work1 = 'assets/images/work1.jpg';
-  static String work2 = 'assets/images/work2.jpg';
-  static String share = 'assets/images/share.png';
-  static String desktop = 'assets/images/desktop.png';
+  // static const String profile1 = 'assets/images/pro1.png';
+  // static const String profile2 = 'assets/images/pro2.png';
+  static const String code = 'assets/images/coding.png';
+  static const String brush = 'assets/images/brush-stroke.png';
+  static const String analyst = 'assets/images/analytics.png';
+  static const String work1 = 'assets/images/work1.jpg';
+  static const String work2 = 'assets/images/work2.jpg';
+  static const String share = 'assets/images/share.png';
+  static const String desktop = 'assets/images/desktop.png';
+
+  static const String embedded = 'assets/images/embedded.png';
+  static const String backend = 'assets/images/backend.png';
+  static const String mac = 'assets/images/mac.png';
+  static const String linux = 'assets/images/linux.png';
+  static const String package = 'assets/images/package.png';
+  static const String windows = 'assets/images/windows.png';
   ///////////////////////////////////LOTTILE///////////////////////////////////////
   static const String rootLottie = "assets/lottie";
   static const String loading = "$rootLottie/loading.json";

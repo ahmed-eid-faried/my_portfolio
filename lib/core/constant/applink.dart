@@ -5,7 +5,7 @@ class AppLink {
   /////===============================home================================//////
   static String home = "$server/data";
   /////===============================contactme================================//////
-  static String message = '$server/message';
+  static String message = '$server/data/messages';
 }
 // static String server = "https://amadytech.com/my_portfolio/user";
 // static String server = "https://ahmed-eid.c1.biz/backend/user";

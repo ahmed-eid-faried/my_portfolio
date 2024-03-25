@@ -11,7 +11,6 @@ import 'package:my_portfolio/core/constant/fonts.dart';
 import 'package:my_portfolio/core/class/constants.dart';
 import 'package:my_portfolio/data/model/projects_list.dart';
 import 'package:my_portfolio/views/widgets/myportfolio/custom_links_of_social.dart';
-import 'package:responsive_sizer/responsive_sizer.dart';
 
 class CustomProjectDetials extends StatelessWidget {
   const CustomProjectDetials({super.key, required this.index});
@@ -29,86 +28,77 @@ class CustomProjectDetials extends StatelessWidget {
           child: InkWell(
             onTap: () => controller.onHover(true, index),
             // onHover: (value) => controller.onHover(value, index),
-            child: Stack(
-              alignment: Alignment.center,
-              children: [
-                kIsWeb
-                    ? Container(
-                        height: Adaptive.px(300),
-                        width: Adaptive.px(400),
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(20)),
-                        child: ImageNetwork(
-                          image: project.plImage!,
-                          height: Adaptive.px(300),
-                          width: Adaptive.px(400),
-                          duration: 0,
-                          curve: Curves.easeIn,
-                          onPointer: true,
-                          fitWeb: BoxFitWeb.fill,
-                          fitAndroidIos: BoxFit.fill,
-                          onLoading: Container(),
+            child: AnimatedContainer(
+              duration: const Duration(milliseconds: 300),
+              decoration: BoxDecoration(
+                color: AppColor.bgColor2,
+                borderRadius: BorderRadius.circular(30),
+                border: Border.all(color: AppColor.bgColor2, width: 1),
+                boxShadow: const [
+                  BoxShadow(
+                      color: Colors.black54,
+                      spreadRadius: 4.0,
+                      blurRadius: 4.5,
+                      offset: Offset(3.0, 4.5))
+                ],
+              ),
+              child: Stack(
+                alignment: Alignment.center,
+                children: [
+                  Container(
+                      decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(20),
-                          onError: Icon(Icons.apps, color: AppColor.themeColor),
-                        ))
-                    : Container(
-                        height: Adaptive.px(300),
-                        width: Adaptive.px(400),
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(20),
-                            image: DecorationImage(
-                              image: CachedNetworkImageProvider(
-                                project.plImage!,
-                                maxHeight: Adaptive.px(300).toInt(),
-                                maxWidth: Adaptive.px(400).toInt(),
-                              ),
-                              fit: BoxFit.fill,
-                              onError: (exception, stackTrace) =>
-                                  Icon(Icons.apps, color: AppColor.themeColor),
-                            ))),
-                Opacity(
-                  opacity: index == controller.hoveredIndex ? 0.5 : 1,
-                  child: AnimatedContainer(
-                    height: Adaptive.px(300),
-                    width: Adaptive.px(400),
-                    duration: const Duration(milliseconds: 600),
-                    transform: index == controller.hoveredIndex
-                        ? controller.onH0verEffect
-                        : null,
-                    curve: Curves.easeIn,
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 14, vertical: 16),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      gradient: LinearGradient(
-                          colors: AppColor.gradientColors,
-                          begin: Alignment.bottomCenter,
-                          end: Alignment.topCenter),
-                    ),
-                    child: Column(
-                      children: [
-                        Text(
-                          project.plTitle.toString(),
-                          textAlign: TextAlign.center,
-                          maxLines: 1,
-                          style: AppTextStyles.montserratStyle(
-                              color: Colors.black87, fontSize: 20),
-                        ),
-                        Constants.sizedBox(height: 15.0),
-                        Text(
-                          project.plBody.toString(),
-                          maxLines: 4,
-                          style:
-                              AppTextStyles.normalStyle(color: Colors.black87),
-                          textAlign: TextAlign.center,
-                        ),
-                        Constants.sizedBox(height: 30.0),
-                        CustomLinksOfSocial(project: project)
-                      ],
+                          image: DecorationImage(
+                            image: NetworkImage(project.plImage!),
+                            fit: BoxFit.fill,
+                            onError: (exception, stackTrace) =>
+                                Icon(Icons.apps, color: AppColor.themeColor),
+                          ))),
+                  Opacity(
+                    opacity: 1,
+                    child: AnimatedContainer(
+                      duration: const Duration(milliseconds: 600),
+                      transform: index == controller.hoveredIndex
+                          ? controller.onH0verEffect
+                          : null,
+                      curve: Curves.easeIn,
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 14, vertical: 16),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        gradient: LinearGradient(
+                            colors: index == controller.hoveredIndex
+                                ? AppColor.gradientColorsSelected
+                                : AppColor.gradientColors,
+                            begin: Alignment.bottomCenter,
+                            end: Alignment.topCenter),
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            project.plTitle.toString(),
+                            textAlign: TextAlign.center,
+                            maxLines: 1,
+                            style: AppTextStyles.montserratStyle(
+                                color: Colors.black87, fontSize: 20),
+                          ),
+                          Constants.sizedBox(height: 15.0),
+                          Text(
+                            project.plBody.toString(),
+                            maxLines: 4,
+                            style: AppTextStyles.normalStyle(
+                                color: Colors.black87),
+                            textAlign: TextAlign.center,
+                          ),
+                          Constants.sizedBox(height: 30.0),
+                          CustomLinksOfSocial(project: project,projectIndex:index)
+                        ],
+                      ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),

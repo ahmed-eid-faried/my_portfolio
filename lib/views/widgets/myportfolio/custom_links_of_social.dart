@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:my_portfolio/controller/my_portfolio_controller.dart';
-import 'package:my_portfolio/core/class/constants.dart';
 import 'package:my_portfolio/core/constant/color.dart';
 import 'package:my_portfolio/core/constant/imgaeasset.dart';
 import 'package:my_portfolio/data/model/projects_list.dart';
@@ -11,8 +10,10 @@ class CustomLinksOfSocial extends StatelessWidget {
   const CustomLinksOfSocial({
     super.key,
     required this.project,
+    required this.projectIndex,
   });
   final Project project;
+  final int projectIndex;
   @override
   Widget build(BuildContext context) {
     Get.put(MyPortfolioController());
@@ -23,6 +24,11 @@ class CustomLinksOfSocial extends StatelessWidget {
       project.plDoc,
       project.plWeb,
       project.plWindows,
+      project.plLinux,
+      project.plMacos,
+      project.plCli,
+      project.plEmbedded,
+      project.plPackage,
     ];
     var assetsButtons = [
       AppAssets.googleplay,
@@ -30,77 +36,23 @@ class CustomLinksOfSocial extends StatelessWidget {
       AppAssets.github,
       AppAssets.doc,
       AppAssets.web,
-      AppAssets.desktop,
+      AppAssets.windows,
+      AppAssets.linux,
+      AppAssets.mac,
+      AppAssets.code,
+      AppAssets.embedded,
+      AppAssets.package,
     ];
     return GetBuilder<MyPortfolioController>(
-      builder: (controller) =>
-          // Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
-          //   if (project.plGoogleplay != null)
-          //     InkWell(
-          //       onTap: () => controller.link(project.plAppstore!),
-          //       child: CircleAvatar(
-          //         maxRadius: 25,
-          //         backgroundColor: Colors.white,
-          //         child: Image.asset(
-          //           AppAssets.googleplay,
-          //           width: 25,
-          //           height: 25,
-          //           fit: BoxFit.fill,
-          //         ),
-          //       ),
-          //     ),
-          //   if (project.plAppstore != null)
-          //     InkWell(
-          //       onTap: () => controller.link(project.plAppstore!),
-          //       child: CircleAvatar(
-          //         maxRadius: 25,
-          //         backgroundColor: Colors.white,
-          //         child: Image.asset(
-          //           AppAssets.appstore,
-          //           width: 25,
-          //           height: 25,
-          //           fit: BoxFit.fill,
-          //         ),
-          //       ),
-          //     ),
-          //   if (project.plGithub != null)
-          //     InkWell(
-          //       onTap: () => controller.link(project.plGithub!),
-          //       child: CircleAvatar(
-          //         maxRadius: 25,
-          //         backgroundColor: Colors.white,
-          //         child: Image.asset(
-          //           AppAssets.github,
-          //           width: 25,
-          //           height: 25,
-          //           fit: BoxFit.fill,
-          //         ),
-          //       ),
-          //     ),
-          //   if (project.plDoc != null)
-          //     InkWell(
-          //         onTap: () => controller.link(project.plDoc!),
-          //         child: CircleAvatar(
-          //           maxRadius: 25,
-          //           backgroundColor: Colors.white,
-          //           child: Image.asset(
-          //             AppAssets.doc,
-          //             width: 25,
-          //             height: 25,
-          //             fit: BoxFit.fill,
-          //           ),
-          //         ))
-          // ])
-
-          SizedBox(
-        height: 48,
-        child: ListView.separated(
-          itemCount: linkButtons.length,
-          shrinkWrap: true,
-          scrollDirection: Axis.horizontal,
-          separatorBuilder: (context, child) => Constants.sizedBox(width: 8.0),
-          itemBuilder: (context, index) {
-            return linkButtons[index] == null || linkButtons[index] == " "
+      builder: (controller) => SizedBox(
+        child: Wrap(
+          runSpacing: 4,
+          spacing: 4,
+          children: List.generate(
+              linkButtons.length > 10 ? 10 : linkButtons.length, (index) {
+            return linkButtons[index] == null ||
+                    linkButtons[index] == " " ||
+                    linkButtons[index] == ""
                 ? const Text("")
                 : InkWell(
                     onTap: () => controller.link(linkButtons[index]!),
@@ -110,9 +62,11 @@ class CustomLinksOfSocial extends StatelessWidget {
                     splashColor: AppColor.bgColor2,
                     child: BuildSocialButton(
                         asset: assetsButtons[index],
-                        hover: controller.socialBI == index ? true : false),
+                        hover: controller.socialBI == index
+                            ? (projectIndex == controller.hoveredIndex)
+                            : false),
                   );
-          },
+          }),
         ),
       ),
     );

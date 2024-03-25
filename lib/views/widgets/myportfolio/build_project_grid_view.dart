@@ -19,7 +19,7 @@ class BuildProjectGridView extends StatelessWidget {
           physics: const NeverScrollableScrollPhysics(),
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: crossAxisCount,
-            mainAxisExtent: 280,
+            mainAxisExtent: 300,
             mainAxisSpacing: 24,
             crossAxisSpacing: 24,
           ),

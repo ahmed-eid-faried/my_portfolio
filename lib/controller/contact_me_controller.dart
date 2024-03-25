@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:my_portfolio/core/class/status_request.dart';
+import 'package:my_portfolio/core/function/handling_data.dart';
+import 'package:my_portfolio/data/datasource/remote/contactme.dart';
 // import 'package:my_portfolio/core/function/handling_data.dart';
 // import 'package:my_portfolio/data/datasource/remote/contactme.dart';
 
@@ -11,7 +13,7 @@ class ContactMeController extends GetxController {
   late TextEditingController controllerSubject;
   late TextEditingController controllerMessage;
 
-  // final ContactMeData contactMeData = Get.find();
+  final ContactMeData contactMeData = Get.find();
   StatusRequest statusRequest = StatusRequest.noAction;
   final formKey = GlobalKey<FormState>();
 
@@ -29,32 +31,32 @@ class ContactMeController extends GetxController {
     controllerMessage = TextEditingController();
   }
 
-  // Future<void> send() async {
-  //   if (formKey.currentState!.validate()) {
-  //     statusRequest = StatusRequest.loading;
-  //     update();
-  //     var response = await contactMeData.send(
-  //       controllerName.text,
-  //       controllerAddress.text,
-  //       controllerNumber.text,
-  //       controllerSubject.text,
-  //       controllerMessage.text,
-  //     );
-  //     statusRequest = handlingData(response);
-  //     if (statusRequest != StatusRequest.offlinefailure) {
-  //       if (statusRequest == StatusRequest.success) {
-  //         if (response['status'] == "success") {
-  //           _clearTextFields();
-  //           _showSuccessDialog(controllerName.text);
-  //         } else {
-  //           _showErrorDialog();
-  //           statusRequest = StatusRequest.failure;
-  //         }
-  //       }
-  //     }
-  //     update();
-  //   }
-  // }
+  Future<void> send() async {
+    if (formKey.currentState!.validate()) {
+      statusRequest = StatusRequest.loading;
+      update();
+      var response = await contactMeData.send(
+        controllerName.text,
+        controllerAddress.text,
+        controllerNumber.text,
+        controllerSubject.text,
+        controllerMessage.text,
+      );
+      statusRequest = handlingData(response);
+      if (statusRequest != StatusRequest.offlinefailure) {
+        if (statusRequest == StatusRequest.success) {
+          if (response['status'] == "success") {
+            clearTextFields();
+            showSuccessDialog(controllerName.text);
+          } else {
+            showErrorDialog();
+            statusRequest = StatusRequest.failure;
+          }
+        }
+      }
+      update();
+    }
+  }
 
   void clearTextFields() {
     controllerName.clear();

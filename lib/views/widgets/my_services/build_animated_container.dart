@@ -75,20 +75,13 @@ class BuildAnimatedContainer extends StatelessWidget {
                       physics: const NeverScrollableScrollPhysics(),
                       children: [
                         kIsWeb
-                            ? ImageNetwork(
-                                image: asset,
+                            ? Image.network(
+                                asset,
                                 height: Adaptive.px(60),
                                 width: Adaptive.px(60),
-                                duration: 1,
-                                curve: Curves.easeIn,
-                                onPointer: true,
-                                debugPrint: false,
-                                fullScreen: false,
-                                fitWeb: BoxFitWeb.fill,
-                                fitAndroidIos: BoxFit.fill,
-                                onLoading: Container(),
-                                onError: Icon(Icons.code,
-                                    color: AppColor.themeColor),
+                                errorBuilder: (context, error, stackTrace) =>
+                                    const Icon(Icons.code),
+                                color: AppColor.themeColor,
                               )
                             : CachedNetworkImage(
                                 imageUrl: asset,
@@ -146,3 +139,32 @@ class BuildAnimatedContainer extends StatelessWidget {
     );
   }
 }
+
+
+// kIsWeb
+//                             ? ColorFiltered(
+//                                 colorFilter: ColorFilter.mode(
+//                                     AppColor.themeColor, BlendMode.srcIn),
+//                                 child: ImageNetwork(
+//                                   image: asset,
+//                                   height: Adaptive.px(60),
+//                                   width: Adaptive.px(60),
+//                                   duration: 1,
+//                                   curve: Curves.easeIn,
+//                                   onPointer: true,
+//                                   debugPrint: false,
+//                                   fullScreen: false,
+//                                   fitWeb: BoxFitWeb.fill,
+//                                   fitAndroidIos: BoxFit.fill,
+//                                   onLoading: Container(),
+//                                   imageCache: NetworkImage(asset),
+//                                   onError: Icon(Icons.code,
+//                                       color: AppColor.themeColor),
+//                                 ),
+//                               )
+//                             : CachedNetworkImage(
+//                                 imageUrl: asset,
+//                                 width: 60,
+//                                 height: 60,
+//                                 errorListener: (p0) => const Icon(Icons.code),
+//                                 color: AppColor.themeColor),
