@@ -28,7 +28,7 @@ class BuildServicesColumn extends StatelessWidget {
                   body: controllerDash.services![index].servicesBody!,
                   asset: controllerDash.services![index].servicesAssets!,
                   index: index,
-                  // servicesType: controllerDash.services![index].servicesType!,
+                  servicesType: controllerDash.services![index].servicesType!,
                 ),
               ),
             ],
@@ -38,4 +38,3 @@ class BuildServicesColumn extends StatelessWidget {
     );
   }
 }
-//

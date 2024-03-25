@@ -1,9 +1,6 @@
 import 'package:animate_do/animate_do.dart';
-import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:image_network/image_network.dart';
 import 'package:my_portfolio/controller/main_dash_board_controller.dart';
 import 'package:my_portfolio/controller/my_portfolio_controller.dart';
 import 'package:my_portfolio/core/constant/color.dart';
@@ -92,7 +89,8 @@ class CustomProjectDetials extends StatelessWidget {
                             textAlign: TextAlign.center,
                           ),
                           Constants.sizedBox(height: 30.0),
-                          CustomLinksOfSocial(project: project,projectIndex:index)
+                          CustomLinksOfSocial(
+                              project: project, projectIndex: index)
                         ],
                       ),
                     ),

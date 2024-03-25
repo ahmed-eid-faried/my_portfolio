@@ -1,4 +1,4 @@
-// import 'dart:io';
+import 'dart:io';
 
 import 'package:get/get.dart';
 import 'package:my_portfolio/core/constant/routes.dart';
@@ -7,7 +7,9 @@ Future<bool> alertExitApp() {
   Get.defaultDialog(
     title: "Warning",
     middleText: "Do You Want To Exit The App",
-    onConfirm: () {},
+    onConfirm: () {
+      exit(0);
+    },
     onCancel: () => Get.back(),
   );
   return Future.value(false);

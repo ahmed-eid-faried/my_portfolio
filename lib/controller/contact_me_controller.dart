@@ -13,7 +13,7 @@ class ContactMeController extends GetxController {
   late TextEditingController controllerSubject;
   late TextEditingController controllerMessage;
 
-  final ContactMeData contactMeData = Get.find();
+  // final ContactMeData contactMeData = Get.find();
   StatusRequest statusRequest = StatusRequest.noAction;
   final formKey = GlobalKey<FormState>();
 
@@ -31,32 +31,28 @@ class ContactMeController extends GetxController {
     controllerMessage = TextEditingController();
   }
 
-  Future<void> send() async {
-    if (formKey.currentState!.validate()) {
-      statusRequest = StatusRequest.loading;
-      update();
-      var response = await contactMeData.send(
-        controllerName.text,
-        controllerAddress.text,
-        controllerNumber.text,
-        controllerSubject.text,
-        controllerMessage.text,
-      );
-      statusRequest = handlingData(response);
-      if (statusRequest != StatusRequest.offlinefailure) {
-        if (statusRequest == StatusRequest.success) {
-          if (response['status'] == "success") {
-            clearTextFields();
-            showSuccessDialog(controllerName.text);
-          } else {
-            showErrorDialog();
-            statusRequest = StatusRequest.failure;
-          }
-        }
-      }
-      update();
-    }
-  }
+  // Future<void> send() async {
+  //   if (formKey.currentState!.validate()) {
+  //     statusRequest = StatusRequest.loading;
+  //     update();
+  //     var response = await contactMeData.send(
+  //       controllerName.text,
+  //       controllerAddress.text,
+  //       controllerNumber.text,
+  //       controllerSubject.text,
+  //       controllerMessage.text,
+  //     );
+  //     statusRequest = handlingData(response);
+  //     if (statusRequest == StatusRequest.success) {
+  //       clearTextFields();
+  //       showSuccessDialog(controllerName.text);
+  //     } else {
+  //       showErrorDialog();
+  //       statusRequest = StatusRequest.failure;
+  //     }
+  //     update();
+  //   }
+  // }
 
   void clearTextFields() {
     controllerName.clear();

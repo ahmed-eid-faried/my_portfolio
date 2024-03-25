@@ -2,7 +2,6 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:image_network/image_network.dart';
 import 'package:my_portfolio/controller/contact_me_controller.dart';
 import 'package:my_portfolio/controller/main_dash_board_controller.dart';
 import 'package:my_portfolio/controller/my_services_controller.dart';
@@ -19,14 +18,14 @@ class BuildAnimatedContainer extends StatelessWidget {
     required this.title,
     required this.asset,
     required this.body,
-    // required this.servicesType,
+    required this.servicesType,
     required this.index,
   });
 
   final String title;
   final String asset;
   final String body;
-  // final String servicesType;
+  final String servicesType;
   final int index;
 
   @override
@@ -128,7 +127,7 @@ class BuildAnimatedContainer extends StatelessWidget {
                               await controllerDash.scrollTo(
                                   index: screensList.length - 2);
                               contactMeController.controllerSubject.text =
-                                  controllerDash.services![index].servicesType!;
+                                  servicesType;
                               contactMeController.update();
                             }),
                       ],
@@ -139,7 +138,6 @@ class BuildAnimatedContainer extends StatelessWidget {
     );
   }
 }
-
 
 // kIsWeb
 //                             ? ColorFiltered(

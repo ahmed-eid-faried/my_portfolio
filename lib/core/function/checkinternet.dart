@@ -42,6 +42,7 @@
 // }
 import 'package:flutter/material.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
+
 Future<bool> checkInternet() async {
   try {
     var connectivityResult = await Connectivity().checkConnectivity();
