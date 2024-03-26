@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:my_portfolio/core/class/status_request.dart';
-import 'package:my_portfolio/core/function/handling_data.dart';
-import 'package:my_portfolio/data/datasource/remote/contactme.dart';
 // import 'package:my_portfolio/core/function/handling_data.dart';
 // import 'package:my_portfolio/data/datasource/remote/contactme.dart';
 

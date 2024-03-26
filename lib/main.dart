@@ -9,9 +9,12 @@ import 'package:my_portfolio/core/services/services.dart';
 import 'package:my_portfolio/routes.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
+import 'dart:io';
+
 // test github actions///
 void main() async {
-  // HttpOverrides.global = MyHttpOverrides
+//************************************* Http ****************************************//
+  HttpOverrides.global = MyHttpOverrides();
   await initService();
   runApp(const MyApp());
   FlutterNativeSplash.remove();
@@ -34,11 +37,11 @@ class MyApp extends StatelessWidget {
   }
 }
 
-// class MyHttpOverrides extends HttpOverrides {
-//   @override
-//   HttpClient createHttpClient(SecurityContext? context) {
-//     return super.createHttpClient(context)
-//       ..badCertificateCallback =
-//           (X509Certificate cert, String host, int port) => true;
-//   }
-// }
+class MyHttpOverrides extends HttpOverrides {
+  @override
+  HttpClient createHttpClient(SecurityContext? context) {
+    return super.createHttpClient(context)
+      ..badCertificateCallback =
+          (X509Certificate cert, String host, int port) => true;
+  }
+}

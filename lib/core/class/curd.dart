@@ -11,6 +11,15 @@ String _basicAuth =
 Map<String, String> myheaders = {'authorization': _basicAuth};
 
 class Curd {
+  static final Map<String, String> myheaders = {
+    // 'authorization': _basicAuth,
+    'Content-Type': 'application/json',
+    'Access-Control-Allow-Origin': '*', // CORS headers
+    'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+    // 'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+    'Access-Control-Allow-Headers': 'Content-Type',
+  };
+
   Future<Either<StatusRequest, Map>> postData(String link, Map data) async {
     try {
       if (await checkInternet()) {
@@ -18,7 +27,7 @@ class Curd {
             await http.post(Uri.parse(link), body: data, headers: myheaders);
         if (response.statusCode == 200 || response.statusCode == 201) {
           var responsebody = jsonDecode(response.body);
-          // debugPrint(responsebody);
+          debugPrint(responsebody);
           return Right(responsebody);
         } else {
           return const Left(StatusRequest.serverfailure);
@@ -32,14 +41,14 @@ class Curd {
     }
   }
 
-  Future<Either<StatusRequest, Map>> getData(String link, Map data) async {
+  Future<Either<StatusRequest, Map>> getData(
+      String link, Map<String, String> data) async {
     try {
       if (await checkInternet()) {
-        var response = await http.get(Uri.parse(link),
-            headers: {"Access-Control-Allow-Origin": "*"});
+        var response = await http.get(Uri.parse(link), headers: myheaders);
         if (response.statusCode == 200 || response.statusCode == 201) {
           var responsebody = jsonDecode(response.body);
-          // debugPrint(responsebody);
+          debugPrint(responsebody);
           return Right(responsebody);
         } else {
           return const Left(StatusRequest.serverfailure);
@@ -53,19 +62,3 @@ class Curd {
     }
   }
 }
-
-// class Curd {
-//   postData(String link,Map data) async {
-//     try {
-//       if (checkInternet()) {
-//         var response = await http.post(Uri.parse(link), body: data);
-//         var responsebody = jsonDecode(response.body);
-//         return responsebody;
-//       } else {
-//         return StatusRequest.offline;
-//       }
-//     } catch (e) {
-//       return StatusRequest.serverfailure;
-//     }
-//   }
-// }
