@@ -23,7 +23,7 @@ dependencies:
   image_network: ^2.5.6 # for web only
   # internet_connection_checker: ^1.0.0+1 #don't support web
   lottie: ^3.1.0 #don't support web
-  # rename: ^3.0.2 #don't support web
+  rename: ^3.0.2 #don't support web
   responsive_sizer: ^3.3.0+1
   scrollable_positioned_list: ^0.3.8
   shared_preferences: ^2.2.2
@@ -31,32 +31,32 @@ dependencies:
 
 dev_dependencies:
   build_runner: ^2.4.8 #don't support web
-  # change_app_package_name: ^1.1.0 #don't support web
+  change_app_package_name: ^1.1.0 #don't support web
   flutter_lints: ^3.0.1
   flutter_test:
     sdk: flutter
-  # icons_launcher: ^2.1.7  #don't support web
+  icons_launcher: ^2.1.7  #don't support web
   mockito: ^5.4.4
 # rename setAppName --targets ios,android --value "amadytech"
 # rename setBundleId --targets ios,android --value "com.amadytech.amadytech"
 # flutter pub run change_app_package_name:main com.amadytech.amadytech
 # flutter pub get
 # dart run icons_launcher:create
-# icons_launcher:
-#   image_path: "assets/images/ic_launcher.png"
-#   platforms:
-#     android:
-#       enable: true
-#     ios:
-#       enable: true
-#     web:
-#       enable: true
-#     macos:
-#       enable: true
-#     windows:
-#       enable: true
-#     linux:
-#       enable: true
+icons_launcher:
+  image_path: "assets/images/ic_launcher.png"
+  platforms:
+    android:
+      enable: true
+    ios:
+      enable: true
+    web:
+      enable: true
+    macos:
+      enable: true
+    windows:
+      enable: true
+    linux:
+      enable: true
 
 # dart run flutter_native_splash:create
 flutter_native_splash:

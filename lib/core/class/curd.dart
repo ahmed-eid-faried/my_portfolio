@@ -13,11 +13,12 @@ Map<String, String> myheaders = {'authorization': _basicAuth};
 class Curd {
   static final Map<String, String> myheaders = {
     // 'authorization': _basicAuth,
-    'Content-Type': 'application/json',
-    'Access-Control-Allow-Origin': '*', // CORS headers
-    'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
-    // 'Access-Control-Allow-Headers': 'Content-Type, Authorization',
-    'Access-Control-Allow-Headers': 'Content-Type',
+    //  'Content-Type': 'application/json',
+    // 'Access-Control-Allow-Origin': '*', // CORS headers
+    // 'Access-Control-Allow-Methods': 'GET,POST,PUT,UPDATE,PATCH,DELETE,OPTIONS',
+    // // // 'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+    // 'Access-Control-Allow-Headers':
+    //     'Content-Type,Access-Control-Allow-Headers,Authorization,X-Requested-With,Access-Control-Allow-Origin',
   };
 
   Future<Either<StatusRequest, Map>> postData(String link, Map data) async {
