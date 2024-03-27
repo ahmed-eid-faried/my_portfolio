@@ -14,12 +14,12 @@ if (localPropertiesFile.exists()) {
 
 def flutterVersionCode = localProperties.getProperty('flutter.versionCode')
 if (flutterVersionCode == null) {
-    flutterVersionCode = '1'
+    flutterVersionCode = '2'
 }
 
 def flutterVersionName = localProperties.getProperty('flutter.versionName')
 if (flutterVersionName == null) {
-    flutterVersionName = '1.0'
+    flutterVersionName = '2.0'
 }
 
 def keystoreProperties = new Properties()
@@ -32,7 +32,8 @@ def keystoreProperties = new Properties()
 android {
     namespace "com.amadytech.amadytech"
     compileSdk flutter.compileSdkVersion
-    ndkVersion flutter.ndkVersion
+    // ndkVersion flutter.ndkVersion
+    ndkVersion "25.1.8937393"
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -59,7 +60,7 @@ android {
     }
     signingConfigs {
         release {
-            storeFile file('keystore.jks') // استبدل بالمسار الصحيح لمفتاح التوقيع الذي أنشأته
+            storeFile file('amadytech-flutter-keystore.jks') // استبدل بالمسار الصحيح لمفتاح التوقيع الذي أنشأته
             storePassword 'awdrfyji38923793SKW-/.SD' // استبدل بكلمة مرور المخزن الخاصة بك
             keyAlias 'upload' // استبدل بالاسم البديل الذي أعطيته للمفتاح
             keyPassword 'awdrfyji38923793SKW-/.SD' // استبدل بكلمة مرور المفتاح الخاصة بك
