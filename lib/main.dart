@@ -20,6 +20,7 @@ class MyApp extends StatelessWidget {
     return ResponsiveSizer(builder: (context, orientation, screenType) {
       return GetMaterialApp(
         title: 'My Portfolio',
+        // This trailing comma makes auto-formatting nicer for build methods.
         debugShowCheckedModeBanner: false,
         theme: ThemeData(primarySwatch: Colors.blue),
         initialBinding: MyBindings(),
