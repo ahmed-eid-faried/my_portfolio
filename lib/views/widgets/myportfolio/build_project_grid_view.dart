@@ -24,7 +24,7 @@ class BuildProjectGridView extends StatelessWidget {
             crossAxisSpacing: 24,
           ),
           itemBuilder: (context, index) {
-            return CustomProjectDetials(index: index);
+            return CustomProjectDetails(index: index);
           },
         ),
       ),

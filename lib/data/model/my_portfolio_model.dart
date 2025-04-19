@@ -2,9 +2,11 @@ import 'package:my_portfolio/data/model/home_detials.dart';
 import 'package:my_portfolio/data/model/projects_list.dart';
 import 'package:my_portfolio/data/model/services.dart';
 import 'package:my_portfolio/data/model/social_media.dart';
+//   "type": "static",
 
 class MyPortfolioModel {
   String? status;
+  bool? isStatic;
   List<SocialMedia>? socialMedia;
   List<ProjectsList>? projectsList;
   List<HomeDetials>? homeDetials;
@@ -12,6 +14,7 @@ class MyPortfolioModel {
 
   MyPortfolioModel(
       {this.status,
+      this.isStatic,
       this.socialMedia,
       this.projectsList,
       this.homeDetials,
@@ -19,6 +22,7 @@ class MyPortfolioModel {
 
   MyPortfolioModel.fromJson(Map<String, dynamic> json) {
     status = json['status'];
+    isStatic = json['isStatic'] ?? false;
     if (json['social_media'] != null) {
       socialMedia = <SocialMedia>[];
       json['social_media'].forEach((v) {
@@ -48,6 +52,7 @@ class MyPortfolioModel {
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['status'] = status;
+    data['isStatic'] = isStatic;
     if (socialMedia != null) {
       data['social_media'] = socialMedia!.map((v) => v.toJson()).toList();
     }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:my_portfolio/core/class/status_request.dart';
+import 'package:my_portfolio/core/constant/applink.dart';
 import 'package:my_portfolio/core/function/handling_data.dart';
 import 'package:my_portfolio/core/services/services.dart';
 import 'package:my_portfolio/data/datasource/remote/home.dart';
@@ -43,6 +44,7 @@ class MainDashBoardControllerImp extends MainDashBoardController {
   List<HomeDetials>? homeDetials = [];
   List<Services>? services = [];
   String cv = '';
+  bool isStatic = false;
   List<String?> socialLink = [];
   List<String?> foooterLink = [];
   var socialBI;
@@ -51,7 +53,8 @@ class MainDashBoardControllerImp extends MainDashBoardController {
   Future<void> intialData() async {
     statusRequest = StatusRequest.loading;
     update();
-    var response = await homeData.getData();
+    // var response = await homeData.getData();
+    var response = await homeData.getStaticData();
     statusRequest = handlingData(response);
     // print("statusRequest:-$statusRequest");
     if (statusRequest == StatusRequest.success) {
@@ -99,6 +102,7 @@ class MainDashBoardControllerImp extends MainDashBoardController {
 
   @override
   updateAllData(response) {
+    isStatic = response['isStatic'] ?? false;
     socialMedia = (response['social_media'] as List)
         .map((item) => SocialMedia.fromJson(item))
         .toList();
@@ -169,6 +173,7 @@ class MainDashBoardControllerImp extends MainDashBoardController {
 
   @override
   void onInit() async {
+    AppLink.image = AppLink.staticImage;
     await intialData();
     await intialData2();
     super.onInit();

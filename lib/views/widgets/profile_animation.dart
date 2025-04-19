@@ -4,10 +4,11 @@ import 'package:image_network/image_network.dart';
 import 'package:my_portfolio/controller/main_dash_board_controller.dart';
 import 'package:my_portfolio/core/constant/applink.dart';
 import 'package:my_portfolio/core/constant/color.dart';
+import 'package:my_portfolio/views/widgets/custom_image_widget.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class ProfileAnimation extends StatelessWidget {
-  const ProfileAnimation({Key? key}) : super(key: key);
+  const ProfileAnimation({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +18,7 @@ class ProfileAnimation extends StatelessWidget {
       builder: (controller) => GetBuilder<MainDashBoardControllerImp>(
         builder: (dashcontroller) => SlideTransition(
           position: controller.animation,
-          child: ImageNetwork(
+          child: CustomImageWidget(
             image:
                 "${AppLink.imagePL}/${dashcontroller.homeDetials![0].hdImage}",
             width: Adaptive.px(350),

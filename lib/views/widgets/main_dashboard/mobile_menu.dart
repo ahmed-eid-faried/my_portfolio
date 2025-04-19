@@ -12,33 +12,45 @@ class MbileMenu extends StatelessWidget {
   Widget build(BuildContext context) {
     Get.put(MainDashBoardControllerImp());
     return GetBuilder<MainDashBoardControllerImp>(
-      builder: (controller) => Row(
-        crossAxisAlignment: CrossAxisAlignment.end,
-        children: [
-          const Text('Portfolio'),
-          const Spacer(),
-          PopupMenuButton(
-            icon: Icon(
-              Icons.menu_sharp,
-              size: 32,
-              color: AppColor.white,
-            ),
-            color: AppColor.bgColor2,
-            position: PopupMenuPosition.under,
-            constraints: BoxConstraints.tightFor(width: Get.width * 0.9),
-            itemBuilder: (BuildContext context) =>
-                menuItems.asMap().entries.map((e) {
-              return PopupMenuItem(
-                textStyle: AppTextStyles.headerTextStyle(),
-                onTap: () {
-                  controller.scrollTo(index: e.key);
-                },
-                child: Text(e.value),
-              );
-            }).toList(),
+      builder:
+          (controller) => Row(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              Text(
+                'Portfolio',
+                style: TextStyle(
+                  fontSize: 32,
+                  fontWeight: FontWeight.w700,
+                  color: AppColor.white,
+                ),
+              ),
+              const Spacer(),
+              PopupMenuButton(
+                icon: Icon(Icons.menu_sharp, size: 32, color: AppColor.white),
+                color: AppColor.bgColor2,
+                position: PopupMenuPosition.under,
+                constraints: BoxConstraints.tightFor(width: Get.width * 0.9),
+                itemBuilder:
+                    (BuildContext context) =>
+                        menuItems.asMap().entries.map((e) {
+                          return PopupMenuItem(
+                            textStyle: AppTextStyles.headerTextStyle(),
+                            onTap: () {
+                              controller.scrollTo(index: e.key);
+                            },
+                            child: Text(
+                              e.value,
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w500,
+                                color: AppColor.white,
+                              ),
+                            ),
+                          );
+                        }).toList(),
+              ),
+            ],
           ),
-        ],
-      ),
     );
   }
 }

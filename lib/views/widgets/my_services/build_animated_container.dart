@@ -7,21 +7,22 @@ import 'package:my_portfolio/controller/contact_me_controller.dart';
 import 'package:my_portfolio/controller/main_dash_board_controller.dart';
 import 'package:my_portfolio/controller/my_services_controller.dart';
 import 'package:my_portfolio/core/class/app_buttons.dart';
+import 'package:my_portfolio/core/class/constants.dart';
 import 'package:my_portfolio/core/constant/color.dart';
 import 'package:my_portfolio/core/constant/fonts.dart';
-import 'package:my_portfolio/core/class/constants.dart';
 import 'package:my_portfolio/data/datasource/static/static.dart';
+import 'package:my_portfolio/views/widgets/custom_image_widget.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class BuildAnimatedContainer extends StatelessWidget {
   const BuildAnimatedContainer({
-    Key? key,
+    super.key,
     required this.title,
     required this.asset,
     required this.body,
     required this.servicesType,
     required this.index,
-  }) : super(key: key);
+  });
 
   final String title;
   final String asset;
@@ -75,17 +76,18 @@ class BuildAnimatedContainer extends StatelessWidget {
                       physics: const NeverScrollableScrollPhysics(),
                       children: [
                         kIsWeb
-                            ? ImageNetwork(
+                            ? CustomImageWidget(
                                 image: asset,
                                 height: Adaptive.px(60),
                                 width: Adaptive.px(60),
                                 duration: 1,
                                 curve: Curves.easeIn,
                                 onPointer: true,
-                                debugPrint: false,
-                                fullScreen: false,
-                                fitWeb: BoxFitWeb.fill,
-                                fitAndroidIos: BoxFit.fill,
+                                color: AppColor.themeColor,
+                                // debugPrint: false,
+                                // fullScreen: false,
+                                fitWeb: BoxFitWeb.contain,
+                                fitAndroidIos: BoxFit.contain,
                                 onLoading: Container(),
                                 onError: Icon(Icons.code,
                                     color: AppColor.themeColor),

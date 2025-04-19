@@ -7,21 +7,24 @@ import 'package:my_portfolio/core/constant/imgaeasset.dart';
 import 'package:my_portfolio/data/model/projects_list.dart';
 import 'package:my_portfolio/views/widgets/home_page/build_social_button.dart';
 
-class CustomLinksOfSocial extends StatelessWidget {
-  const CustomLinksOfSocial({
-    super.key,
-    required this.project,
-  });
+class CustomLinksOfSocial extends StatefulWidget {
+  const CustomLinksOfSocial({super.key, required this.project});
   final ProjectsList project;
+
+  @override
+  State<CustomLinksOfSocial> createState() => _CustomLinksOfSocialState();
+}
+
+class _CustomLinksOfSocialState extends State<CustomLinksOfSocial> {
   @override
   Widget build(BuildContext context) {
     Get.put(MyPortfolioController());
     var linkButtons = [
-      project.plGoogleplay,
-      project.plAppstore,
-      project.plGithub,
-      project.plDoc,
-      project.plWeb,
+      widget.project.plGoogleplay,
+      widget.project.plAppstore,
+      widget.project.plGithub,
+      widget.project.plDoc,
+      widget.project.plWeb,
     ];
     var assetsButtons = [
       AppAssets.googleplay,
@@ -30,8 +33,11 @@ class CustomLinksOfSocial extends StatelessWidget {
       AppAssets.doc,
       AppAssets.web,
     ];
+    var socialBI;
+
     return GetBuilder<MyPortfolioController>(
-      builder: (controller) =>
+      builder:
+          (controller) =>
           // Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
           //   if (project.plGoogleplay != null)
           //     InkWell(
@@ -89,30 +95,41 @@ class CustomLinksOfSocial extends StatelessWidget {
           //           ),
           //         ))
           // ])
-
           SizedBox(
-        height: 48,
-        child: ListView.separated(
-          itemCount: linkButtons.length,
-          shrinkWrap: true,
-          scrollDirection: Axis.horizontal,
-          separatorBuilder: (context, child) => Constants.sizedBox(width: 8.0),
-          itemBuilder: (context, index) {
-            return linkButtons[index] == null || linkButtons[index] == " "
-                ? const Text("")
-                : InkWell(
-                    onTap: () => controller.link(linkButtons[index]!),
-                    onHover: (value) => controller.fun(value, index),
-                    borderRadius: BorderRadius.circular(550.0),
-                    hoverColor: AppColor.themeColor,
-                    splashColor: AppColor.bgColor2,
-                    child: BuildSocialButton(
+            height: 48,
+            child: ListView.separated(
+              itemCount: linkButtons.length,
+              shrinkWrap: true,
+              scrollDirection: Axis.horizontal,
+              separatorBuilder:
+                  (context, child) => Constants.sizedBox(width: 8.0),
+              itemBuilder: (context, index) {
+                return linkButtons[index] == null || linkButtons[index] == " "
+                    ? const Text("")
+                    : InkWell(
+                      onTap: () => controller.link(linkButtons[index]!),
+                      onHover: (value) {
+                        setState(() {
+                          if (value) {
+                            socialBI = index;
+                          } else {
+                            socialBI = null;
+                          }
+                        });
+
+                        controller.fun(value, index);
+                      },
+                      borderRadius: BorderRadius.circular(550.0),
+                      hoverColor: AppColor.themeColor,
+                      splashColor: AppColor.bgColor2,
+                      child: BuildSocialButton(
                         asset: assetsButtons[index],
-                        hover: controller.socialBI == index ? true : false),
-                  );
-          },
-        ),
-      ),
+                        hover: socialBI == index ? true : false,
+                      ),
+                    );
+              },
+            ),
+          ),
     );
   }
 }

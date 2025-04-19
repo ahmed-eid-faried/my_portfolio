@@ -1,0 +1,69 @@
+{
+  "isStatic": true,
+  "status": "success",
+  "social_media": [
+    {
+      "sm_facebook": "https://facebook.com/your_profile",
+      "sm_whatsapp": "https://wa.me/1234567890",
+      "sm_github": "https://github.com/your_username",
+      "sm_linkedin": "https://linkedin.com/in/your_profile",
+      "sm_email": "mailto:you@example.com",
+      "sm_twitter": "https://twitter.com/your_username",
+      "sm_cv": "https://example.com/your_cv.pdf",
+      "sm_instagram": "https://instagram.com/your_profile",
+      "sm_id": "1"
+    }
+  ],
+  "projects_list": [
+    {
+      "pl_id": "1",
+      "pl_title": "Awesome Flutter App",
+      "pl_body": "A cross‑platform app built with Flutter.",
+      "pl_image": "project1.png",
+      "pl_googleplay": "https://play.google.com/store/apps/details?id=com.example.app",
+      "pl_appstore": "https://apps.apple.com/app/id1234567890",
+      "pl_github": "https://github.com/your_username/project1",
+      "pl_doc": "https://example.com/docs/project1.pdf",
+      "pl_web": "https://project1.example.com"
+    },
+    {
+      "pl_id": "2",
+      "pl_title": "Portfolio Website",
+      "pl_body": "My personal portfolio built with Flutter Web.",
+      "pl_image": "project2.png",
+      "pl_googleplay": "",
+      "pl_appstore": "",
+      "pl_github": "https://github.com/your_username/portfolio",
+      "pl_doc": "",
+      "pl_web": "https://yourname.dev"
+    }
+  ],
+  "home_detials": [
+    {
+      "hd_id": "1",
+      "hd_name": "Your Name",
+      "hd_desc": "Flutter & Dart Developer",
+      "hd_image": "you.png",
+      "hd_cv": "https://example.com/your_cv.pdf",
+      "hd_aboutmename": "About Me",
+      "hd_aboutmedesc": "Passionate about building beautiful mobile and web experiences with Flutter.",
+      "hd_aboutimage": "about_me.png"
+    }
+  ],
+  "services": [
+    {
+      "services_id": "1",
+      "services_title": "Mobile App Development",
+      "services_body": "Full‑stack Flutter development for iOS & Android.",
+      "services_assets": "mobile_dev.png",
+      "services_type": "mobile"
+    },
+    {
+      "services_id": "2",
+      "services_title": "Web Development",
+      "services_body": "Responsive web apps using Flutter Web.",
+      "services_assets": "web_dev.png",
+      "services_type": "web"
+    }
+  ]
+}

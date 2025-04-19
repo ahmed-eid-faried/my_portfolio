@@ -6,114 +6,146 @@ import 'package:get/get.dart';
 import 'package:image_network/image_network.dart';
 import 'package:my_portfolio/controller/main_dash_board_controller.dart';
 import 'package:my_portfolio/controller/my_portfolio_controller.dart';
+import 'package:my_portfolio/core/class/constants.dart';
 import 'package:my_portfolio/core/constant/applink.dart';
 import 'package:my_portfolio/core/constant/color.dart';
 import 'package:my_portfolio/core/constant/fonts.dart';
-import 'package:my_portfolio/core/class/constants.dart';
 import 'package:my_portfolio/data/model/projects_list.dart';
+import 'package:my_portfolio/views/widgets/custom_image_widget.dart';
 import 'package:my_portfolio/views/widgets/myportfolio/custom_links_of_social.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
-class CustomProjectDetials extends StatelessWidget {
-  const CustomProjectDetials({super.key, required this.index});
+class CustomProjectDetails extends StatelessWidget {
+  const CustomProjectDetails({Key? key, required this.index}) : super(key: key);
   final int index;
 
   @override
   Widget build(BuildContext context) {
-    Get.put(MyPortfolioController());
-    return GetBuilder<MainDashBoardControllerImp>(builder: (dashcontroller) {
-      ProjectsList project = dashcontroller.projectsList![index];
+    final dashController = Get.find<MainDashBoardControllerImp>();
+    final controller = Get.put(MyPortfolioController());
+    ProjectsList project = dashController.projectsList![index];
 
-      return GetBuilder<MyPortfolioController>(
-        builder: (controller) => FadeInUpBig(
-          duration: const Duration(milliseconds: 1600),
-          child: InkWell(
-            onTap: () => controller.onHover(true, index),
-            // onHover: (value) => controller.onHover(value, index),
-            child: Stack(
-              alignment: Alignment.center,
-              children: [
-                kIsWeb
-                    ? Container(
-                        height: Adaptive.px(300),
-                        width: Adaptive.px(400),
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(20)),
-                        child: ImageNetwork(
-                          image: "${AppLink.imagePL}/${project.plImage!}",
-                          height: Adaptive.px(300),
-                          width: Adaptive.px(400),
-                          duration: 0,
-                          curve: Curves.easeIn,
-                          onPointer: true,
-                          fitWeb: BoxFitWeb.fill,
-                          fitAndroidIos: BoxFit.fill,
-                          onLoading: Container(),
-                          borderRadius: BorderRadius.circular(20),
-                          onError: Icon(Icons.apps, color: AppColor.themeColor),
-                        ))
-                    : Container(
-                        height: Adaptive.px(300),
-                        width: Adaptive.px(400),
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(20),
-                            image: DecorationImage(
-                              image: CachedNetworkImageProvider(
-                                "${AppLink.imagePL}/${project.plImage!}",
-                                maxHeight: Adaptive.px(300).toInt(),
-                                maxWidth: Adaptive.px(400).toInt(),
+    return GetBuilder<MyPortfolioController>(
+      builder:
+          (_) => FadeInUpBig(
+            duration: const Duration(milliseconds: 600),
+            child: MouseRegion(
+              onEnter: (_) => controller.onHover(true, index),
+              onExit: (_) => controller.onHover(false, index),
+              child: AnimatedContainer(
+                duration: const Duration(milliseconds: 300),
+                curve: Curves.easeOut,
+                transform:
+                    index == controller.hoveredIndex
+                        ? (Matrix4.identity()..scale(1.02))
+                        : Matrix4.identity(),
+                decoration: BoxDecoration(
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.2),
+                      blurRadius: 8,
+                      offset: const Offset(0, 4),
+                    ),
+                  ],
+                ),
+                child: Card(
+                  clipBehavior: Clip.antiAlias,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(16),
+                  ),
+                  elevation: 4,
+                  child: Stack(
+                    children: [
+                      // Background image
+                      SizedBox(
+                        height: 40.h,
+                        width: double.infinity,
+                        child:
+                            kIsWeb
+                                ? CustomImageWidget(
+                                  height: 40.h,
+                                  width: double.infinity,
+                                  image:
+                                      "${AppLink.imagePL}/${project.plImage!}",
+                                  fitWeb: BoxFitWeb.cover,
+                                  fitAndroidIos: BoxFit.cover,
+                                  borderRadius: BorderRadius.circular(0),
+                                )
+                                : CachedNetworkImage(
+                                  height: 40.h,
+                                  width: double.infinity,
+                                  imageUrl:
+                                      "${AppLink.imagePL}/${project.plImage!}",
+                                  fit: BoxFit.cover,
+                                  errorWidget:
+                                      (_, __, ___) => Icon(
+                                        Icons.broken_image,
+                                        color: AppColor.themeColor,
+                                      ),
+                                ),
+                      ),
+
+                      // Dark gradient overlay
+                      Positioned.fill(
+                        child: AnimatedOpacity(
+                          opacity: index == controller.hoveredIndex ? 0.3 : 0.6,
+                          duration: const Duration(milliseconds: 300),
+                          child: Container(
+                            decoration: BoxDecoration(
+                              gradient: LinearGradient(
+                                begin: Alignment.bottomCenter,
+                                end: Alignment.topCenter,
+                                colors: [
+                                  Colors.black.withOpacity(0.8),
+                                  Colors.transparent,
+                                ],
                               ),
-                              fit: BoxFit.fill,
-                              onError: (exception, stackTrace) =>
-                                  Icon(Icons.apps, color: AppColor.themeColor),
-                            ))),
-                Opacity(
-                  opacity: index == controller.hoveredIndex ? 1 : 0.5,
-                  child: AnimatedContainer(
-                    height: Adaptive.px(300),
-                    width: Adaptive.px(400),
-                    duration: const Duration(milliseconds: 600),
-                    transform: index == controller.hoveredIndex
-                        ? controller.onH0verEffect
-                        : null,
-                    curve: Curves.easeIn,
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 14, vertical: 16),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      gradient: LinearGradient(
-                          colors: AppColor.gradientColors,
-                          begin: Alignment.bottomCenter,
-                          end: Alignment.topCenter),
-                    ),
-                    child: Column(
-                      children: [
-                        Text(
-                          project.plTitle.toString(),
-                          textAlign: TextAlign.center,
-                          maxLines: 1,
-                          style: AppTextStyles.montserratStyle(
-                              color: Colors.black87, fontSize: 20),
+                            ),
+                          ),
                         ),
-                        Constants.sizedBox(height: 15.0),
-                        Text(
-                          project.plBody.toString(),
-                          maxLines: 4,
-                          style:
-                              AppTextStyles.normalStyle(color: Colors.black87),
-                          textAlign: TextAlign.center,
+                      ),
+
+                      // Text content
+                      Positioned(
+                        bottom: 16,
+                        left: 16,
+                        right: 16,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              project.plTitle ?? '',
+                              style: AppTextStyles.montserratStyle(
+                                color: Colors.white,
+                                fontSize: 18,
+                              ),
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                            Constants.sizedBox(height: 8),
+                            Text(
+                              project.plBody ?? '',
+                              style: AppTextStyles.normalStyle(
+                                color: Colors.white70,
+                                fontSize: 14,
+                              ),
+                              maxLines: 3,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                            Constants.sizedBox(height: 12),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [CustomLinksOfSocial(project: project)],
+                            ),
+                          ],
                         ),
-                        Constants.sizedBox(height: 30.0),
-                        CustomLinksOfSocial(project: project)
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
                 ),
-              ],
+              ),
             ),
           ),
-        ),
-      );
-    });
+    );
   }
 }
